@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
+const route = useRoute()
 const button_info_list: { name: string, path: string }[] = [
   {
     name: 'Hello',
@@ -14,7 +15,20 @@ const button_info_list: { name: string, path: string }[] = [
 ]
 
 function changeRouting(path: string) {
-  router.push(path)
+  const cur_routing_path: string[] = route.fullPath.split('/')
+  let prefix_index: number = 0
+
+  for (let i = 0; i < cur_routing_path.length; i++) {
+    if (cur_routing_path[i] === 'dist') {
+      prefix_index = i
+      break
+    }
+  }
+
+  const new_routing_path: string = cur_routing_path.slice(0, prefix_index + 1).join('/') + path
+
+  console.log(new_routing_path)
+  router.push(new_routing_path)
 }
 </script>
 
