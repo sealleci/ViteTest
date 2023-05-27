@@ -15,20 +15,22 @@ const button_info_list: { name: string, path: string }[] = [
 ]
 
 function changeRouting(path: string) {
-  const cur_routing_path: string[] = route.fullPath.split('/')
-  let prefix_index: number = 0
+  // const cur_routing_path: string[] = route.fullPath.split('/')
+  // let prefix_index: number = 0
 
-  for (let i = 0; i < cur_routing_path.length; i++) {
-    if (cur_routing_path[i] === 'dist') {
-      prefix_index = i
-      break
-    }
-  }
+  // for (let i = 0; i < cur_routing_path.length; i++) {
+  //   if (cur_routing_path[i] === 'dist') {
+  //     prefix_index = i
+  //     break
+  //   }
+  // }
 
-  const new_routing_path: string = cur_routing_path.slice(0, prefix_index + 1).join('/') + path
+  // const new_routing_path: string = cur_routing_path.slice(0, prefix_index + 1).join('/') + path
 
-  console.log(new_routing_path)
-  router.push(new_routing_path)
+  // console.log(new_routing_path)
+  // router.push(new_routing_path)
+
+  router.push(path)
 }
 </script>
 
